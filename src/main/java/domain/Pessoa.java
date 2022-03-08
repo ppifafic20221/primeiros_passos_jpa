@@ -32,14 +32,11 @@ public class Pessoa implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
-    @Column(name = "pessoa_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
     private List<Contato> contatos;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Veiculo> veiculos;
-
 
     public Pessoa(String nome, String cpf) {
         this.nome = nome;

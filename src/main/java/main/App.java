@@ -4,6 +4,7 @@ import domain.Contato;
 import domain.Endereco;
 import domain.Pessoa;
 import domain.Veiculo;
+import repository.ContatoRepository;
 import repository.PessoaRepository;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class App {
     public static void main(String[] args) {
 
         PessoaRepository pessoaRepository = new PessoaRepository();
+        ContatoRepository contatoRepository = new ContatoRepository();
 
         Veiculo camaro = Veiculo.builder()
                 .anoDeFabricacao(2020)
@@ -92,9 +94,16 @@ public class App {
 //        pessoaRepository.savePessoa(pedro);
 //        pessoaRepository.savePessoa(jose);
 
+        //f8f7d055-bec6-469e-8c23-efa3366c0a6f id - Maria
+        Contato contato = contatoRepository.contatoById(UUID.fromString("1736e124-f195-4be0-86d3-4bff2753a2c5"));
+        Pessoa mariaRecuparada = pessoaRepository.findById(UUID.fromString("f8f7d055-bec6-469e-8c23-efa3366c0a6f"));
+        contato.setPessoa(mariaRecuparada);
+        contatoRepository.saveOrUpdateContato(contato);
+
+
       //  System.out.println(pessoaRepository.findById(UUID.fromString("eb730a4c-72fc-4abd-a262-534b7dcfa1b7")));
       //  System.out.println(pessoaRepository.getAll());
-        System.out.println(pessoaRepository.getStateByUF("PB"));
+       // System.out.println(pessoaRepository.getStateByUF("PB"));
 
         System.out.println("operação realizada com sucesso!!!!");
     }

@@ -13,7 +13,9 @@ public class PessoaRepository {
 
     public void savePessoa(Pessoa pessoa){
         jpaPersistence.getEntityManager().getTransaction().begin();
-        jpaPersistence.getEntityManager().persist(pessoa);
+       // jpaPersistence.getEntityManager().persist(pessoa);
+        jpaPersistence.getEntityManager().merge(pessoa);
+
         jpaPersistence.getEntityManager().getTransaction().commit();
     }
 

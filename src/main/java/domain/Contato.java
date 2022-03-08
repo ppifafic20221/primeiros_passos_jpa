@@ -22,6 +22,9 @@ public class Contato implements Serializable {
     private String email;
     private String telefone;
 
+    @ManyToOne
+    private Pessoa pessoa;
+
     public Contato(String email, String telefone) {
         this.email = email;
         this.telefone = telefone;
